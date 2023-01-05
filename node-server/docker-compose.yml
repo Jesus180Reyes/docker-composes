@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  node-server:
+    container_name: node-server
+    image: jesus18reyes/pruebas-node:latest
+    ports:
+      - 3000:8080
+    restart: always
+
+  db:
+    container_name: mysql-db
+    image: mysql:debian
+    depends_on:
+      - node-server
+    volumes:
+      - node-vol:/var/lib/mysql
+    environment:
+       MYSQL_USER: u186970938_jesus
+       MYSQL_PASSWORD: T0Qd3uV4z;4a
+       MYSQL_ROOT_PASSWORD: T0Qd3uV4z;4a
+       MYSQL_DATABASE: u186970938_agencia_gb
+       
+    ports:
+      - 3306:3306
+    restart: always
+
+  phpMyAdmin:
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    image: phpmyadmin:apache
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+       PMA_HOST: mysql-db
+       PMA_PORT: 3306
+
+    
+
+volumes:
+  node-vol:
+    external: false
+      
