@@ -20,6 +20,7 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: jesus
       ME_CONFIG_MONGODB_ADMINPASSWORD: 123456
       ME_CONFIG_MONGODB_URL: mongodb://jesus:123456@mongo:27017/
+#                                      Users:passowrd:host
       # ME_CONFIG_MONGODB_URL: mongodb://jesus:123456@localhost:27017/
   
 volumes:
